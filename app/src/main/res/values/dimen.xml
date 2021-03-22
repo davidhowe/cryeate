@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TEXT SIZE -->
+    <dimen name="text_size_heading">30sp</dimen>
+    <dimen name="text_size_sub_heading">22sp</dimen>
+
+    <!-- SPACING -->
+    <dimen name="margin_launch_header_text">40dp</dimen>
+    <dimen name="margin_page_padding">24dp</dimen>
+    <dimen name="margin_header_to_sub">16dp</dimen>
+
+    <!-- PROGRESS VIEW -->
+    <dimen name="progress_view_small">28dp</dimen>
+
+
+</resources>

@@ -19,7 +19,7 @@ class LaunchViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { _->
                 Timber.d("Timer expired")
-                liveDataEvent.postValue(BaseStateUI.To(LaunchFragmentDirections.actionLaunchFragmentToMainFragment()))
+                //liveDataEvent.postValue(BaseStateUI.To(LaunchFragmentDirections.actionLaunchFragmentToMainFragment()))
             }
     }
 

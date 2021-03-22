@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
 }
@@ -59,6 +60,9 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.23.2'
     //JODA TIME ANDROID WRAPPER LIB
     implementation 'net.danlew:android.joda:2.10.9.1'
+    //LOTTIE ANIMATION
+    implementation "com.airbnb.android:lottie:3.5.0"
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
