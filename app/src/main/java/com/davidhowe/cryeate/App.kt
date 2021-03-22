@@ -2,10 +2,11 @@ package com.davidhowe.cryeate
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.davidhowe.cryeate.di.AppComponent
 import com.davidhowe.cryeate.di.AppModule
 import com.davidhowe.cryeate.di.DaggerAppComponent
-import net.danlew.android.joda.JodaTimeAndroid
+import com.davidhowe.cryeate.repositories.Database
 import timber.log.Timber
 
 class App : Application() {

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.davidhowe.cryeate.App.Companion.appComponent
 import com.davidhowe.cryeate.di.AppComponent
+import com.davidhowe.cryeate.di.ViewModelFactory
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Provider
@@ -24,10 +25,13 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
         inject(appComponent)
     }
 
-    abstract fun inject(appComponent : AppComponent)
+    abstract fun inject(appComponent: AppComponent)
 
     open fun provideViewModel(): VM {
-        return ViewModelProvider(this).get(viewModelClass)
+        return ViewModelProvider(
+            this,
+            ViewModelFactory(mProvider)
+        ).get(viewModelClass)
     }
 
     /**
