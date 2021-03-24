@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="coin"
+            type="com.davidhowe.cryeate.models.db.Coin"/>
+    </data>
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="24dp"
+        android:layout_margin="8dp"
+        android:onClick="@{clickListener}"
+        android:background="@drawable/shape_list_background"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/root_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_normal">
+
+            <ImageView
+                android:id="@+id/iv_coin"
+                android:layout_width="@dimen/main_list_image_size"
+                android:layout_height="@dimen/main_list_image_size"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:imageFromUrl="@{coin.imageRemote}"
+                tools:srcCompat = "@drawable/bitcoin"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                style="@style/TextViewListHeading"
+                app:layout_constraintTop_toTopOf="@+id/iv_coin"
+                app:layout_constraintStart_toEndOf="@+id/iv_coin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:text="@{coin.name}"
+                tools:text="Bitcoin"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                style="@style/TextViewListData"
+                android:layout_marginTop="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                app:layout_constraintStart_toEndOf="@+id/iv_coin"
+                app:text="@{coin.getFormattedPrice()}"
+                tools:text="$501123"/>
+
+            <ImageView
+                android:id="@+id/ic_change_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                app:layout_constraintTop_toTopOf="@+id/tv_price"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+                app:layout_constraintStart_toEndOf="@+id/tv_price"
+                app:priceChangeArrow="@{coin.priceChangePercentage24h}"
+                tools:srcCompat="@drawable/ic_arrow_up_green"/>
+
+            <TextView
+                android:id="@+id/tv_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                style="@style/TextViewListData"
+                android:layout_marginTop="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                app:layout_constraintStart_toEndOf="@+id/ic_change_arrow"
+                app:priceChangeText="@{coin.priceChangePercentage24h}"
+                tools:text="$501123"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

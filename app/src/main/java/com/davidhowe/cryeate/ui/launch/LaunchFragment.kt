@@ -9,7 +9,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import com.davidhowe.cryeate.R
 import com.davidhowe.cryeate.base.BaseFragment
 import com.davidhowe.cryeate.di.AppComponent
-import kotlinx.android.synthetic.main.launch_fragment.*
+import kotlinx.android.synthetic.main.fragment_launch.*
 
 class LaunchFragment : BaseFragment<LaunchViewModel>() {
 
@@ -19,7 +19,7 @@ class LaunchFragment : BaseFragment<LaunchViewModel>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.launch_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_launch, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

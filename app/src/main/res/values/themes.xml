@@ -27,4 +27,15 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TextViewListHeading" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_list_header</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewListData" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/list_item_subtext</item>
+        <item name="android:textSize">@dimen/text_size_list_sub_text</item>
+    </style>
+
 </resources>

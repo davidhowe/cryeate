@@ -6,8 +6,8 @@ import org.joda.time.Minutes
 object Config {
     const val LAUNCH_DELAY = 5000L
 
-    val MAX_API_LAST_ACTIVE = Hours.TWO.toStandardDuration().millis //2 hours in millis
-    val MAX_API_PRICES_LAST_RETRIEVED = Minutes.minutes(5).toStandardDuration().millis //5 minutes in millis
+    val MAX_API_LAST_ACTIVE = 5000L//Hours.TWO.toStandardDuration().millis //2 hours in millis
+    val MAX_API_PRICES_LAST_RETRIEVED = 5000L//Minutes.minutes(5).toStandardDuration().millis //5 minutes in millis
 
     enum class COIN {BITCOIN, ETHEREUM, LITECOIN, RIPPLE, MONERO, CARDANO, DOGECOIN}
 

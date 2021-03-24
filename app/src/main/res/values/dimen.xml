@@ -3,6 +3,10 @@
     <!-- TEXT SIZE -->
     <dimen name="text_size_heading">30sp</dimen>
     <dimen name="text_size_sub_heading">22sp</dimen>
+    <dimen name="text_size_list_header">24sp</dimen>
+    <dimen name="text_size_list_sub_text">20sp</dimen>
+
+
 
     <!-- SPACING -->
     <dimen name="margin_launch_header_text">40dp</dimen>
@@ -11,6 +15,15 @@
 
     <!-- PROGRESS VIEW -->
     <dimen name="progress_view_small">28dp</dimen>
+
+    <!-- MAIN LIST -->
+    <dimen name="main_list_image_size">64dp</dimen>
+
+    <!-- MARGINS -->
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+
+
 
 
 </resources>

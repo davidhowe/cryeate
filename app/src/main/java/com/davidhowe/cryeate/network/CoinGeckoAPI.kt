@@ -62,5 +62,5 @@ interface CoinGeckoAPI {
     fun getServerStatus() : Single<Response<GetServerStatusResponse>>
 
     @GET//"coins/markets?vs_currency=zar&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-    fun getCoinsMarketInfo(@Url url: String) : Single<Response<GetCoinMarketDataResponse>>
+    fun getCoinsMarketInfo(@Url url: String) : Single<Response<List<GetCoinMarketDataResponse>>>
 }

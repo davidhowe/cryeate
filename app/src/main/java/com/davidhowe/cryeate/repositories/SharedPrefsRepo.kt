@@ -9,6 +9,7 @@ package com.davidhowe.cryeate.repositories
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import timber.log.Timber
 import javax.inject.Inject
 
 private const val PREF_FILE_NAME = "cryeate_prefs_v1"
@@ -20,6 +21,7 @@ class SharedPrefsRepo @Inject constructor(private val context: Context) {
     }
 
     fun setFirstLaunch(firstLaunch : Boolean) {
-        context.getSharedPreferences(KEY_FIRST_LAUNCH, MODE_PRIVATE).edit().putBoolean(KEY_FIRST_LAUNCH, firstLaunch).apply()
+        Timber.d("setFirstLaunch=$firstLaunch")
+        context.getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE).edit().putBoolean(KEY_FIRST_LAUNCH, firstLaunch).apply()
     }
 }

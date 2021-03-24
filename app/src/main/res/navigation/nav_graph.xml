@@ -9,7 +9,7 @@
         android:id="@+id/launchFragment"
         android:name="com.davidhowe.cryeate.ui.launch.LaunchFragment"
         android:label="fragment_launch"
-        tools:layout="@layout/launch_fragment" >
+        tools:layout="@layout/fragment_launch" >
         <action
             android:id="@+id/action_launchFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -18,5 +18,5 @@
         android:id="@+id/mainFragment"
         android:name="com.davidhowe.cryeate.ui.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" />
+        tools:layout="@layout/fragment_main" />
 </navigation>

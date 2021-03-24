@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.davidhowe.cryeate.repositories
+package com.davidhowe.cryeate.repositories.dao
 
 import androidx.room.*
 import io.reactivex.Completable
-import io.reactivex.Single
 
 
 interface BaseDao<T> {

@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import com.davidhowe.cryeate.App
 import com.davidhowe.cryeate.network.CoinGeckoAPI
-import com.davidhowe.cryeate.repositories.Database
+import com.davidhowe.cryeate.repositories.dao.Database
 import com.davidhowe.cryeate.repositories.SharedPrefsRepo
-import com.davidhowe.cryeate.usecases.database.UCRepoProperties
-import com.davidhowe.cryeate.usecases.network.UCUpdateServerStatus
+import com.davidhowe.cryeate.repositories.usecases.UCRepoProperties
+import com.davidhowe.cryeate.network.usecases.UCUpdateServerStatus
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

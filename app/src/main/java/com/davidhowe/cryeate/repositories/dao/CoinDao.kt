@@ -1,4 +1,4 @@
-package com.davidhowe.cryeate.repositories
+package com.davidhowe.cryeate.repositories.dao
 
 import androidx.room.Dao
 import androidx.room.Query
@@ -12,4 +12,6 @@ interface CoinDao : BaseDao<Coin> {
 
     @Query("SELECT * FROM Coin WHERE id = :coinGeckoId")
     fun getEntry(coinGeckoId: String): Single<Coin>
+
+
 }

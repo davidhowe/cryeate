@@ -6,5 +6,5 @@ import com.davidhowe.cryeate.extensions.SingleLiveEvent
 
 abstract class BaseViewModel(application: App) : AndroidViewModel(application) {
     val liveDataEvent = SingleLiveEvent<BaseStateUI>()
-    open fun onViewCreated() {}
+    open fun load() {}
 }

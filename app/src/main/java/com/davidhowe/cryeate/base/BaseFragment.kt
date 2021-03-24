@@ -16,7 +16,7 @@ import javax.inject.Provider
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.Factory {
     abstract val viewModelClass : Class<VM>
-    private val viewModel : VM by lazy { provideViewModel() }
+    val viewModel : VM by lazy { provideViewModel() }
     @Inject
     lateinit var mProvider: Provider<VM>
 
@@ -44,7 +44,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
             viewLifecycleOwner,
             baseStateUIObserver
         )
-        viewModel.onViewCreated()
+        viewModel.load()
         super.onViewCreated(view, savedInstanceState)
     }
 
