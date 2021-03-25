@@ -3,9 +3,8 @@ package com.davidhowe.cryeate.models.db
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.davidhowe.cryeate.utils.CustomFormatter
 import com.davidhowe.cryeate.models.network.GetCoinMarketDataResponse
-import timber.log.Timber
-import java.text.DecimalFormat
 
 @Entity
 class Coin (
@@ -19,7 +18,8 @@ class Coin (
     @ColumnInfo(name = "market_cap_rank") var marketCapRank: Int=0,
     @ColumnInfo(name = "high_24h") var high24h: Int=0,
     @ColumnInfo(name = "low_24h") var low24h: Int=0,
-    @ColumnInfo(name = "price_change_percentage_24h") var priceChangePercentage24h: Double=0.0
+    @ColumnInfo(name = "price_change_percentage_24h") var priceChangePercentage24h: Double=0.0,
+    @ColumnInfo(name = "server_timestamp") var serverTimestamp: String=""
 ) {
     fun updateFromNetwork(networkModel : GetCoinMarketDataResponse, priceSymbol: String) {
         this.symbol = networkModel.symbol
@@ -32,9 +32,10 @@ class Coin (
         this.high24h = networkModel.high_24h.toInt()
         this.low24h = networkModel.low_24h.toInt()
         this.priceChangePercentage24h = networkModel.price_change_percentage_24h
+        this.serverTimestamp = networkModel.last_updated
     }
 
     fun getFormattedPrice() : String {
-        return priceSymbol+DecimalFormat("#0.00").format(price)
+        return priceSymbol+ CustomFormatter.getPriceDecimalFormatter(price).format(price)
     }
 }

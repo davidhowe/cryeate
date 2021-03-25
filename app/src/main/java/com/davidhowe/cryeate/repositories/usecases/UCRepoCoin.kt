@@ -17,6 +17,10 @@ class UCRepoCoin @Inject constructor(private val roomDb: Database) {
         return roomDb.coinDao().getEntry(coin.id).subscribeOn(Schedulers.io())
     }
 
+    fun getEntry(id: String) : Single<Coin> {
+        return roomDb.coinDao().getEntry(id).subscribeOn(Schedulers.io())
+    }
+
     fun updateCoins(coinList: List<Coin>) : Completable {
         Timber.d("updateCoins")
         return roomDb.coinDao().insert(coinList).subscribeOn(Schedulers.io())

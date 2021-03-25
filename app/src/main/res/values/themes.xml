@@ -2,8 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.Cryeate" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorPrimaryDark">@color/accent_dark</item>
+        <item name="colorPrimaryVariant">@color/accent_dark</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -11,6 +12,10 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/blue_gray_50</item>
+
         <!-- Customize your theme here. -->
     </style>
 
@@ -27,6 +32,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TextViewNormal" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/blue_gray_50</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
     <style name="TextViewListHeading" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/text_size_list_header</item>
@@ -37,5 +47,4 @@
         <item name="android:textColor">@color/list_item_subtext</item>
         <item name="android:textSize">@dimen/text_size_list_sub_text</item>
     </style>
-
 </resources>

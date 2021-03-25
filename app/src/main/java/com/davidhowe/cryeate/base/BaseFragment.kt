@@ -7,7 +7,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.callbacks.onDismiss
 import com.davidhowe.cryeate.App.Companion.appComponent
+import com.davidhowe.cryeate.R
 import com.davidhowe.cryeate.di.AppComponent
 import com.davidhowe.cryeate.di.ViewModelFactory
 import timber.log.Timber
@@ -63,18 +66,35 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
             when (state) {
                 BaseStateUI.Back -> {
                     Timber.d("state Back")
-                }
-                is BaseStateUI.BackTo -> {
-                    Timber.d("state BackTo: ${state.destinationId}")
+                    findNavController().navigateUp()
                 }
                 is BaseStateUI.To -> {
                     Timber.d("state To: ${state.directions}")
                     findNavController().navigate(state.directions)
                 }
-                BaseStateUI.ToRoot -> {
-                    Timber.d("state ToRoot")
+                is BaseStateUI.ErrorDialog -> {
+                    when(state.errorState) {
+                        BaseStateUI.ErrorStates.NETWORK_ERROR -> {
+                            MaterialDialog(this.context!!)
+                                .title(R.string.text_network_error_title)
+                                .message(R.string.text_network_error_message)
+                                .onDismiss {
+                                    state.listener.get()?.onPosClicked()
+                                }
+                                .show {
+                                icon(R.drawable.ic_network_error)
+                                positiveButton(R.string.dialog_text_ok) {
+                                    state.listener.get()?.onPosClicked()
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
+    }
+
+    interface DialogClickListener {
+        fun onPosClicked()
     }
 }

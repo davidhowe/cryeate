@@ -3,4 +3,17 @@
     <!--LAUNCH PAGE -->
     <string name="text_launch_summary">Your crypto coin info hub</string>
 
+    <!--MAIN PAGE -->
+    <string name="text_main_title">Cryeate</string>
+    <string name="text_main_sub_title">Your coin list</string>
+
+    <!-- ERROR TEXTS -->
+    <string name="text_network_error_title">Network error</string>
+    <string name="text_network_error_message">A network error has occurred. Please review your device internet connection and try again.</string>
+
+
+    <!-- GENERIC TEXT -->
+    <string name="dialog_text_ok">OK</string>
+
+
 </resources>

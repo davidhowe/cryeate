@@ -25,13 +25,9 @@ class LaunchFragment : BaseFragment<LaunchViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ObjectAnimator.ofFloat(tv_header, "translationY", 30f).apply {
-            duration = 2500
-            interpolator = AccelerateDecelerateInterpolator()
-            start()
-        }
+        runHeaderAnimations()
 
-        tv_desc.apply {
+        prog_loading.apply {
             alpha = 0f
             visibility = View.VISIBLE
             animate()
@@ -39,8 +35,16 @@ class LaunchFragment : BaseFragment<LaunchViewModel>() {
                 .setDuration(2500L)
                 .setListener(null)
         }
+    }
 
-        prog_loading.apply {
+    private fun runHeaderAnimations() {
+        ObjectAnimator.ofFloat(tv_header, "translationY", 30f).apply {
+            duration = 2500
+            interpolator = AccelerateDecelerateInterpolator()
+            start()
+        }
+
+        tv_desc.apply {
             alpha = 0f
             visibility = View.VISIBLE
             animate()

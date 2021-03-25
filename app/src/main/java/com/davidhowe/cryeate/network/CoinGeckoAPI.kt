@@ -7,6 +7,7 @@
 
 package com.davidhowe.cryeate.network
 
+import com.davidhowe.cryeate.models.network.GetCoinHistoryDataResponse
 import com.davidhowe.cryeate.models.network.GetCoinMarketDataResponse
 import io.reactivex.Single
 import retrofit2.Response
@@ -63,4 +64,7 @@ interface CoinGeckoAPI {
 
     @GET//"coins/markets?vs_currency=zar&order=market_cap_desc&per_page=100&page=1&sparkline=false"
     fun getCoinsMarketInfo(@Url url: String) : Single<Response<List<GetCoinMarketDataResponse>>>
+
+    @GET//"coins/bitcoin/market_chart?vs_currency=usd&days=7"
+    fun getCoinMarketHistory(@Url url: String) : Single<Response<GetCoinHistoryDataResponse>>
 }

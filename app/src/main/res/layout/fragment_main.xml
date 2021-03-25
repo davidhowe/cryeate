@@ -5,40 +5,65 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewModel"
-        type="com.davidhowe.cryeate.ui.main.MainViewModel"/>
+        <variable
+            name="varViewModel"
+            type="com.davidhowe.cryeate.ui.main.MainViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background_launch"
         tools:context=".ui.main.MainFragment">
+
+        <TextView
+            android:id="@+id/tv_header"
+            style="@style/TextViewHeading"
+            android:layout_width="410dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/margin_main_header_text"
+            android:gravity="center_horizontal"
+            android:text="@string/text_main_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            style="@style/TextViewSubHeading"
+            android:layout_marginTop="@dimen/margin_header_to_sub"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header"
+            android:text="@string/text_main_sub_title" />
+
+        <TextView
+            android:id="@+id/tv_desc_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            style="@style/TextViewNormal"
+            android:layout_marginTop="@dimen/margin_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc"
+            tools:text="2021-03-25 00:43" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/coin_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/margin_main_header_text"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/row_item_main_list"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc_2"
             app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/prog_loading"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:indeterminate="true"
-            app:showIfLoading="@{viewModel.isLoadingVB}"
-            app:indicatorSize="@dimen/progress_view_small"
-            app:showAnimationBehavior="inward"
-            app:indicatorColor="@color/blue_gray_50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

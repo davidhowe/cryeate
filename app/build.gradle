@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
     //DI DAGGER
     implementation 'com.google.dagger:dagger-android:2.27'
-    implementation "com.google.dagger:dagger:2.27"
+    implementation "com.google.dagger:dagger:2.31.2"
     implementation 'com.google.dagger:dagger-android-support:2.27'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     kapt 'com.google.dagger:dagger-android-processor:2.23.2'
@@ -69,15 +69,19 @@ dependencies {
     //NETWORKING RETROFIT
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.8.1"
-    implementation "com.squareup.retrofit2:converter-gson:2.7.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     //DATABASE ROOM
-    implementation "androidx.room:room-runtime:2.2.6"
-    implementation "androidx.room:room-ktx:2.2.6"
-    implementation "androidx.room:room-rxjava2:2.2.6"
-    kapt "androidx.room:room-compiler:2.2.6"
+    implementation "androidx.room:room-runtime:2.3.0-beta03"
+    implementation "androidx.room:room-ktx:2.3.0-beta03"
+    implementation "androidx.room:room-rxjava2:2.3.0-beta03"
+    kapt "androidx.room:room-compiler:2.3.0-beta03"
     //GLIDE IMAGING
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //GRAPHING
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    //DIALOGS
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

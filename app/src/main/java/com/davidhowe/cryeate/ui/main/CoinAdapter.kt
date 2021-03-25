@@ -3,6 +3,7 @@ package com.davidhowe.cryeate.ui.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -35,21 +36,20 @@ class CoinAdapter : ListAdapter<Coin, RecyclerView.ViewHolder>(CoinDiffCallback(
         init {
             binding.setClickListener {
                 binding.coin?.let { plant ->
-                    navigateToCoin(plant, it)
+                    navigateToCoinDetailView(plant, it)
                 }
             }
         }
 
-        private fun navigateToCoin(
+        private fun navigateToCoinDetailView(
                 coin: Coin,
                 view: View
         ) {
-            /*val direction =
-                    HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(
-                            plant.plantId
+            val direction =
+                    MainFragmentDirections.actionMainFragmentToCoinDetailFragment(
+                        coin.id
                     )
-            view.findNavController().navigate(direction)*/
-            //todo navigate to coin view
+            view.findNavController().navigate(direction)
         }
 
         fun bind(item: Coin) {

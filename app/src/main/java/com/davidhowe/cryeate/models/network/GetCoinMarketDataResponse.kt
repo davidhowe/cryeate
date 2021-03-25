@@ -8,5 +8,6 @@ class GetCoinMarketDataResponse(
     val image: String,
     val high_24h: Double,
     val low_24h: Double,
-    val price_change_percentage_24h: Double
+    val price_change_percentage_24h: Double,
+    val last_updated : String
 )

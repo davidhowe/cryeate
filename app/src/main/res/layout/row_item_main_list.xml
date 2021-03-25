@@ -14,7 +14,7 @@
         app:cardCornerRadius="24dp"
         android:layout_margin="8dp"
         android:onClick="@{clickListener}"
-        android:background="@drawable/shape_list_background"
+        android:background="@color/blue_gray_50"
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
@@ -22,6 +22,7 @@
             android:id="@+id/root_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/blue_gray_50"
             android:padding="@dimen/margin_normal">
 
             <ImageView
@@ -72,7 +73,6 @@
                 android:id="@+id/tv_change"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
                 style="@style/TextViewListData"
                 android:layout_marginTop="@dimen/margin_small"
                 app:layout_constraintTop_toBottomOf="@+id/tv_name"

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="varViewModel"
+            type="com.davidhowe.cryeate.ui.coindetail.CoinDetailViewModel"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_launch"
+            tools:context=".ui.coindetail.CoinDetailViewModel">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/ic_size_generic"
+                android:layout_height="@dimen/ic_size_generic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:onClick="@{() -> varViewModel.onBackPressed()}"
+                app:srcCompat="@drawable/ic_back"/>
+
+            <TextView
+                android:id="@+id/tv_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                style="@style/TextViewHeading"
+                app:hideIfLoading="@{varViewModel.baseViewState}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="@{varViewModel.coinName}" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                style="@style/TextViewSubHeading"
+                app:hideIfLoading="@{varViewModel.baseViewState}"
+                android:layout_marginTop="@dimen/margin_header_to_sub"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_header"
+                android:text="7 Day Summary" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/line_chart"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/coin_detail_graph_height"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                app:hideIfLoading="@{varViewModel.baseViewState}"
+                app:bindChartData="@{varViewModel.baseViewState}"
+                app:layout_constraintTop_toBottomOf="@+id/tv_desc"/>
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/prog_loading"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:showIfLoading="@{varViewModel.baseViewState}"
+                android:indeterminate="true"
+                app:indicatorSize="@dimen/progress_view_small"
+                app:showAnimationBehavior="inward"
+                app:indicatorColor="@color/blue_gray_50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

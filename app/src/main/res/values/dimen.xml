@@ -5,11 +5,12 @@
     <dimen name="text_size_sub_heading">22sp</dimen>
     <dimen name="text_size_list_header">24sp</dimen>
     <dimen name="text_size_list_sub_text">20sp</dimen>
-
-
+    <dimen name="text_size_normal">18sp</dimen>
 
     <!-- SPACING -->
+    <dimen name="margin_detail_header_text">48dp</dimen>
     <dimen name="margin_launch_header_text">40dp</dimen>
+    <dimen name="margin_main_header_text">24dp</dimen>
     <dimen name="margin_page_padding">24dp</dimen>
     <dimen name="margin_header_to_sub">16dp</dimen>
 
@@ -18,11 +19,18 @@
 
     <!-- MAIN LIST -->
     <dimen name="main_list_image_size">64dp</dimen>
+    <dimen name="ic_account_size">42dp</dimen>
+
+    <!-- COIN DETAIL -->
+    <dimen name="coin_detail_graph_height">320dp</dimen>
 
     <!-- MARGINS -->
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
 
+    <!-- ICONS -->
+    <dimen name="ic_size_generic">32dp</dimen>
 
 
 

@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.davidhowe.cryeate.R
+import com.davidhowe.cryeate.utils.CustomFormatter
 import timber.log.Timber
 import java.text.DecimalFormat
 
@@ -31,10 +32,5 @@ fun bindArrowFromPrice(view: ImageView, priceChange: Double) {
 @BindingAdapter("priceChangeText")
 fun bindTextFromPrice(view: TextView, priceChange: Double) {
     Timber.d("priceChange=$priceChange")
-    view.text = "${DecimalFormat("#0.00").format(priceChange)}%"
-}
-
-@BindingAdapter("showIfLoading")
-fun bindLoadingState(view: View, loading: Boolean) {
-    view.visibility = if(loading) View.VISIBLE else View.GONE
+    view.text = "${CustomFormatter.getPriceDecimalFormatter(priceChange).format(priceChange)}%"
 }
