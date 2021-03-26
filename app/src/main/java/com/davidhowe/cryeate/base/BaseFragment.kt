@@ -76,14 +76,12 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
                     when(state.errorState) {
                         BaseStateUI.ErrorStates.NETWORK_ERROR -> {
                             MaterialDialog(this.context!!)
+                                .cancelOnTouchOutside(false)
                                 .title(R.string.text_network_error_title)
                                 .message(R.string.text_network_error_message)
-                                .onDismiss {
-                                    state.listener.get()?.onPosClicked()
-                                }
                                 .show {
                                 icon(R.drawable.ic_network_error)
-                                positiveButton(R.string.dialog_text_ok) {
+                                positiveButton(state.positiveButtonResId) {
                                     state.listener.get()?.onPosClicked()
                                 }
                             }

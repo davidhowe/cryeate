@@ -31,8 +31,7 @@
                 android:layout_height="@dimen/main_list_image_size"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:imageFromUrl="@{coin.imageRemote}"
-                tools:srcCompat = "@drawable/bitcoin"/>
+                app:imageFromUrl="@{coin.imageRemote}"/>
 
             <TextView
                 android:id="@+id/tv_name"

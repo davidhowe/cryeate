@@ -14,6 +14,7 @@
 
     <!-- GENERIC TEXT -->
     <string name="dialog_text_ok">OK</string>
+    <string name="dialog_text_retry">RETRY</string>
 
 
 </resources>

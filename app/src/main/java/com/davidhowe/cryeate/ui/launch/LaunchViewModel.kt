@@ -5,14 +5,14 @@ import com.davidhowe.cryeate.App
 import com.davidhowe.cryeate.Config.MAX_API_LAST_ACTIVE
 import com.davidhowe.cryeate.Config.MAX_API_PRICES_LAST_RETRIEVED
 import com.davidhowe.cryeate.Config.MIN_LAUNCH_SCREEN_DURATION
+import com.davidhowe.cryeate.R
 import com.davidhowe.cryeate.base.BaseFragment
 import com.davidhowe.cryeate.base.BaseStateUI
 import com.davidhowe.cryeate.base.BaseViewModel
 import com.davidhowe.cryeate.network.usecases.UCUpdateCoinInfo
-import com.davidhowe.cryeate.repositories.SharedPrefsRepo
 import com.davidhowe.cryeate.repositories.usecases.UCRepoProperties
 import com.davidhowe.cryeate.network.usecases.UCUpdateServerStatus
-import io.reactivex.Completable
+import com.davidhowe.cryeate.repositories.usecases.UCDefaultDBData
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -26,8 +26,8 @@ class LaunchViewModel @Inject constructor(
         val ucUpdateServerStatus: UCUpdateServerStatus,
         val ucUpdateCoinInfo: UCUpdateCoinInfo,
         val ucRepoProperties: UCRepoProperties,
-        val sharedPrefsRepo: SharedPrefsRepo
-    ) : BaseViewModel(application) {
+        val ucDefaultDBData: UCDefaultDBData
+    ) : BaseViewModel(application), BaseFragment.DialogClickListener {
 
     private enum class STEP {CHECK_ACTIVE, FETCH_COIN_INFO, TRANSITION}
 
@@ -39,9 +39,7 @@ class LaunchViewModel @Inject constructor(
     @SuppressLint("CheckResult")
     override fun load() {
         launchStartTime = System.currentTimeMillis()
-        runDBDefaultData().subscribe {
-            Timber.d("Inserted default data")
-            sharedPrefsRepo.setFirstLaunch(false)
+        ucDefaultDBData.execute().subscribe {
             doNextStep()
         }
     }
@@ -94,6 +92,7 @@ class LaunchViewModel @Inject constructor(
         when(currentStep) {
             STEP.CHECK_ACTIVE -> {
                 compositeDisposable.addAll(ucUpdateServerStatus.execute()
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe ({ result ->
                         if(result) {
                             Timber.d("CHECK_ACTIVE result=$result")
@@ -107,6 +106,7 @@ class LaunchViewModel @Inject constructor(
             }
             STEP.FETCH_COIN_INFO -> {
                 compositeDisposable.addAll(ucUpdateCoinInfo.execute()
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe ({ result ->
                         if(result) {
                             Timber.d("FETCH_COIN_INFO result=$result")
@@ -131,27 +131,20 @@ class LaunchViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Presents generic network error dialog, progresses back on user tap
+     */
     private fun handleNetworkError() {
         liveDataEvent.postValue(BaseStateUI.ErrorDialog(
             errorState = BaseStateUI.ErrorStates.NETWORK_ERROR,
-            listener = WeakReference(
-                object : BaseFragment.DialogClickListener {
-                    override fun onPosClicked() {
-                        liveDataEvent.postValue(BaseStateUI.Back)
-                    }
-                }
-            )
+            listener = WeakReference(this@LaunchViewModel),
+            positiveButtonResId = R.string.dialog_text_retry
         ))
     }
 
-    //todo move to seperate class
-    private fun runDBDefaultData() : Completable {
-        Timber.d("runDBDefaultData")
-
-        return if(sharedPrefsRepo.isFirstLaunch()) {
-            ucRepoProperties.setDefaultEntry()
-        } else {
-            Single.just(1).ignoreElement()
-        }
+    override fun onPosClicked() {
+        Timber.d("Clicked ok")
+        doNextStep()
+        //liveDataEvent.postValue(BaseStateUI.Back)
     }
 }

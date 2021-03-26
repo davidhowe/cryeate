@@ -34,6 +34,12 @@ class CoinDetailViewModel @Inject constructor(
     val coinName: LiveData<String> = _coinName
 
     @SuppressLint("CheckResult")
+    /**
+     * Process:
+     * 1. Fetches coin from local db repo
+     * 2. Attempts network call to retrieve coin history from api
+     * 3. Presents coin history if success OR shows error messages if fail
+     */
     override fun load(id: String) {
         Timber.d("Load : coinId=$id")
 
@@ -61,6 +67,9 @@ class CoinDetailViewModel @Inject constructor(
                 })
     }
 
+    /**
+     * Presents generic network error dialog, progresses back on user tap
+     */
     private fun handleNetworkError() {
         liveDataEvent.postValue(BaseStateUI.ErrorDialog(
             errorState = BaseStateUI.ErrorStates.NETWORK_ERROR,

@@ -1,6 +1,7 @@
 package com.davidhowe.cryeate.base
 
 import androidx.navigation.NavDirections
+import com.davidhowe.cryeate.R
 import java.lang.ref.WeakReference
 
 sealed class BaseStateUI {
@@ -11,7 +12,7 @@ sealed class BaseStateUI {
     data class BackTo(val destinationId: Int): BaseStateUI()
     object ToRoot: BaseStateUI()
     data class ToastMessage(val messageResId: Int): BaseStateUI()
-    data class ErrorDialog(val errorState: ErrorStates, val listener : WeakReference<BaseFragment.DialogClickListener>): BaseStateUI()
+    data class ErrorDialog(val errorState: ErrorStates, val listener : WeakReference<BaseFragment.DialogClickListener>, val positiveButtonResId: Int = R.string.dialog_text_ok): BaseStateUI()
     //TODO OTHER UI STATES
 }
 

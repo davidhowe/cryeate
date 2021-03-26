@@ -8,18 +8,26 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import com.davidhowe.cryeate.R
 import com.davidhowe.cryeate.base.BaseFragment
+import com.davidhowe.cryeate.databinding.FragmentCoinDetailBinding
+import com.davidhowe.cryeate.databinding.FragmentLaunchBinding
 import com.davidhowe.cryeate.di.AppComponent
 import kotlinx.android.synthetic.main.fragment_launch.*
 
 class LaunchFragment : BaseFragment<LaunchViewModel>() {
 
+    lateinit var binding: FragmentLaunchBinding
     override val viewModelClass = LaunchViewModel::class.java
     override fun inject(appComponent: AppComponent) = appComponent.inject(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_launch, container, false)
+        binding = FragmentLaunchBinding.inflate(inflater, container, false)
+        with(binding) {
+            varViewModel = viewModel
+            lifecycleOwner = this@LaunchFragment
+        }
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
