@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.callbacks.onDismiss
 import com.davidhowe.cryeate.App.Companion.appComponent
 import com.davidhowe.cryeate.R
 import com.davidhowe.cryeate.di.AppComponent
