@@ -1,5 +1,4 @@
-package com.davidhowe.cryeate.ui.main
-import android.view.View
+package com.davidhowe.cryeate.ui.main.watchlist
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -8,7 +7,6 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.davidhowe.cryeate.R
 import com.davidhowe.cryeate.utils.CustomFormatter
 import timber.log.Timber
-import java.text.DecimalFormat
 
 @BindingAdapter("imageFromUrl")
 fun bindImageFromUrl(view: ImageView, imageUrl: String?) {

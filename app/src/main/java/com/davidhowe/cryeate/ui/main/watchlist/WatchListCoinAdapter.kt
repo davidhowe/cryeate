@@ -1,4 +1,4 @@
-package com.davidhowe.cryeate.ui.main
+package com.davidhowe.cryeate.ui.main.watchlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -46,9 +46,9 @@ class CoinAdapter : ListAdapter<Coin, RecyclerView.ViewHolder>(CoinDiffCallback(
                 view: View
         ) {
             val direction =
-                    MainFragmentDirections.actionMainFragmentToCoinDetailFragment(
-                        coin.id
-                    )
+                WatchListFragmentDirections.actionWatchListFragmentToCoinDetailFragment(
+                    coin.id
+                )
             view.findNavController().navigate(direction)
         }
 

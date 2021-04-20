@@ -5,16 +5,22 @@
 
     <!--MAIN PAGE -->
     <string name="text_main_title">Cryeate</string>
-    <string name="text_main_sub_title">Your coin list</string>
+    <string name="text_main_sub_title">Your coin watch list</string>
+
+    <!-- TABS TEXT-->
+    <string name="text_tab_watchlist">Watch List</string>
+    <string name="text_tab_signals">Signals</string>
+
 
     <!-- ERROR TEXTS -->
     <string name="text_network_error_title">Network error</string>
     <string name="text_network_error_message">A network error has occurred. Please review your device internet connection and try again.</string>
 
-
     <!-- GENERIC TEXT -->
     <string name="dialog_text_ok">OK</string>
     <string name="dialog_text_retry">RETRY</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -7,13 +7,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.davidhowe.cryeate.ui.main.MainViewModel"/>
+            type="com.davidhowe.cryeate.ui.main.watchlist.WatchListViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.MainFragment">
+        tools:context=".ui.main.watchlist.WatchListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/coin_list"

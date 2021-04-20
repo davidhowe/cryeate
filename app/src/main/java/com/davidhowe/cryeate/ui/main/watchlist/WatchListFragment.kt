@@ -1,4 +1,4 @@
-package com.davidhowe.cryeate.ui.main
+package com.davidhowe.cryeate.ui.main.watchlist
 
 import android.animation.ObjectAnimator
 import android.content.res.Configuration
@@ -9,16 +9,15 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.lifecycle.Observer
 import com.davidhowe.cryeate.base.BaseFragment
-import com.davidhowe.cryeate.databinding.FragmentMainBinding
+import com.davidhowe.cryeate.databinding.FragmentWatchListBinding
 import com.davidhowe.cryeate.di.AppComponent
-import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_watch_list.*
 import timber.log.Timber
 
-class MainFragment : BaseFragment<MainViewModel>() {
-
-    lateinit var binding: FragmentMainBinding
+class WatchListFragment : BaseFragment<WatchListViewModel>() {
+    lateinit var binding: FragmentWatchListBinding
     lateinit var adapter: CoinAdapter
-    override val viewModelClass = MainViewModel::class.java
+    override val viewModelClass = WatchListViewModel::class.java
     override fun inject(appComponent: AppComponent) = appComponent.inject(this)
 
     override fun onCreateView(
@@ -27,7 +26,7 @@ class MainFragment : BaseFragment<MainViewModel>() {
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding = FragmentWatchListBinding.inflate(inflater, container, false)
         adapter = CoinAdapter()
         binding.coinList.adapter = adapter
         with(binding) {
@@ -68,10 +67,10 @@ class MainFragment : BaseFragment<MainViewModel>() {
         }
     }
 
-    private val mainStateUIObserver = Observer<MainStateUI> { state ->
+    private val mainStateUIObserver = Observer<WatchListStateUI> { state ->
         state?.let {
             when (state) {
-                is MainStateUI.CoinList -> {
+                is WatchListStateUI.CoinList -> {
                     Timber.d("is MainStateUI.CoinList ->")
                     tv_desc_2?.text = state.lastUpdated
                     adapter.submitList(state.coinList)
@@ -80,6 +79,4 @@ class MainFragment : BaseFragment<MainViewModel>() {
 
         }
     }
-
-
 }

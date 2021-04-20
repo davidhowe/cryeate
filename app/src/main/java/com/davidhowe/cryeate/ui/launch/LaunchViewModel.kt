@@ -123,10 +123,10 @@ class LaunchViewModel @Inject constructor(
                     Single.timer(MIN_LAUNCH_SCREEN_DURATION - (System.currentTimeMillis()-launchStartTime), TimeUnit.MILLISECONDS)
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe { _->
-                                liveDataEvent.postValue(BaseStateUI.To(LaunchFragmentDirections.actionLaunchFragmentToMainFragment()))
+                                liveDataEvent.postValue(BaseStateUI.To(LaunchFragmentDirections.actionLaunchFragmentToMainTabFragment()))
                             }
                 else
-                    liveDataEvent.postValue(BaseStateUI.To(LaunchFragmentDirections.actionLaunchFragmentToMainFragment()))
+                    liveDataEvent.postValue(BaseStateUI.To(LaunchFragmentDirections.actionLaunchFragmentToMainTabFragment()))
             }
         }
     }
