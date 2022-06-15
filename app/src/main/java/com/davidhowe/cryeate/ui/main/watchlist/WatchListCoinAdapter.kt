@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.davidhowe.cryeate.databinding.RowItemMainListBinding
 import com.davidhowe.cryeate.models.db.Coin
+import com.davidhowe.cryeate.ui.main.MainTabFragmentDirections
 import timber.log.Timber
 
 class CoinAdapter : ListAdapter<Coin, RecyclerView.ViewHolder>(CoinDiffCallback()) {
@@ -46,7 +47,7 @@ class CoinAdapter : ListAdapter<Coin, RecyclerView.ViewHolder>(CoinDiffCallback(
                 view: View
         ) {
             val direction =
-                WatchListFragmentDirections.actionWatchListFragmentToCoinDetailFragment(
+                MainTabFragmentDirections.actionMainTabFragmentToCoinDetailFragment(
                     coin.id
                 )
             view.findNavController().navigate(direction)

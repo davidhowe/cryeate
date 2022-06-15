@@ -56,7 +56,7 @@ dependencies {
     //TIMBER FOR LOGS
     implementation 'com.jakewharton.timber:timber:4.7.1'
     //DI DAGGER
-    implementation 'com.google.dagger:dagger-android:2.27'
+    implementation 'com.google.dagger:dagger-android:2.35.1'
     implementation "com.google.dagger:dagger:2.31.2"
     implementation 'com.google.dagger:dagger-android-support:2.27'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
